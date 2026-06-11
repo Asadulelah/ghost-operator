@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GHOST OPERATOR - watch an AI run the software</title>
+<meta name="description" content="There is a CRM below this page. No human is going to use it. Watch an AI operator work: it reads, decides, writes, and notices when you move.">
+<meta property="og:title" content="GHOST OPERATOR">
+<meta property="og:description" content="Software that runs itself. Release the ghost and watch.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0D11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="iwrap">
+    <div class="ik">AGENT-OPERATED SOFTWARE · LIVE DEMONSTRATION</div>
+    <h1>GHOST<br><i>OPERATOR</i></h1>
+    <p>There is a CRM below this page. <b>No human is going to use it.</b><br>
+    An AI operator will read the pipeline, find what's been neglected, write the emails,
+    repair the records, and move the deals. You just watch.<br><br>
+    It works better with the sound on. And it knows when you move.</p>
+    <div class="ibtns">
+      <button class="ibig" id="startSound">RELEASE THE GHOST · SOUND ON</button>
+      <button class="ighost" id="startSilent">release silently</button>
+    </div>
+    <div class="ifoot">every name and number below is fiction · nothing is stored · no AI calls are made, the ghost is theater - the thesis is not</div>
+  </div>
+</div>
+
+<div class="frame">
+
+  <!-- THE CRM -->
+  <div class="crm">
+    <div class="topbar">
+      <div class="logo">atlas<i>crm</i></div>
+      <input class="search" placeholder="Search leads, companies, deals…" readonly>
+      <div class="tb-right"><span>Acme Workspace</span><span class="avatar" style="margin:0">OP</span></div>
+    </div>
+    <div class="sidebar">
+      <div class="nav-sec">Workspace</div>
+      <button class="nav-item act" data-v="dashboard">◈ Dashboard</button>
+      <button class="nav-item" data-v="leads">☰ Leads</button>
+      <button class="nav-item" data-v="pipeline">⫼ Pipeline</button>
+      <div class="nav-sec">Coming soon</div>
+      <button class="nav-item" style="opacity:.4;pointer-events:none">✉ Inbox</button>
+      <button class="nav-item" style="opacity:.4;pointer-events:none">▤ Reports</button>
+    </div>
+    <div class="main">
+      <section id="viewDashboard">
+        <div class="vh"><h1>Dashboard</h1><span>updated live</span></div>
+        <div class="kpis">
+          <div class="kpi"><div class="l">Open pipeline</div><div class="v" id="kpiPipe">$0</div></div>
+          <div class="kpi"><div class="l">Open deals</div><div class="v" id="kpiOpen">0</div></div>
+          <div class="kpi"><div class="l">Stale threads (5d+)</div><div class="v" id="kpiStale">0</div></div>
+        </div>
+        <div class="panelbox"><div class="l">Operator log</div><div id="opslog"><div><span>--:--</span> awaiting operator…</div></div></div>
+      </section>
+      <section id="viewLeads" style="display:none">
+        <div class="vh"><h1>Leads</h1><span>8 records</span></div>
+        <table><thead><tr><th>Name</th><th>Company</th><th>Value</th><th>Stage</th><th>Last touch</th><th>Phone</th></tr></thead>
+        <tbody id="leadRows"></tbody></table>
+      </section>
+      <section id="viewPipeline" style="display:none">
+        <div class="vh"><h1>Pipeline</h1><span>drag to move · the ghost does</span></div>
+        <div class="kanban" id="kanban"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- GHOST CONSOLE -->
+  <div class="console-wrap">
+    <div class="ch-head">
+      <div class="t">▌GHOST CONSOLE</div>
+      <div class="s">the operator's reasoning, narrated live. it reads, decides, acts. you supervise.</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="l">TASKS DONE</div><div class="v" id="stTasks">0</div></div>
+      <div class="stat"><div class="l">UPTIME</div><div class="v" id="stUp">00:00</div></div>
+      <div class="stat"><div class="l">HUMANS REQ.</div><div class="v">0</div></div>
+    </div>
+    <div id="console"></div>
+    <div class="controls">
+      <button class="cbtn" id="pauseBtn">PAUSE / TAKE CONTROL</button>
+      <button class="cbtn spd on" data-s="1">1×</button>
+      <button class="cbtn spd" data-s="2">2×</button>
+      <button class="cbtn spd" data-s="4">4×</button>
+      <button class="cbtn" id="sndTgl">SOUND OFF</button>
+      <button class="cbtn" id="motTgl">MOTION ON</button>
+    </div>
+    <div class="thesis">
+      <b>the thesis:</b> agents are becoming the primary operators of software; the UI is turning into a
+      supervision layer. this page is that future, performed. ·
+      <a href="https://github.com/Asadulelah/ghost-operator" target="_blank" rel="noopener">source</a> ·
+      built by <a href="https://github.com/Asadulelah" target="_blank" rel="noopener">Asadulelah</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- LEAD DRAWER -->
+<div class="drawer" id="drawer">
+  <h2 id="dName">-</h2>
+  <div class="sub" id="dCo">-</div>
+  <div class="sub" id="dLast">-</div>
+  <div class="field"><label>Email</label><div class="ro" id="dEmail">-</div></div>
+  <div class="field"><label>Phone</label><input id="dPhone" autocomplete="off"></div>
+  <div class="field"><label>Context</label><div class="note" id="dNote">-</div></div>
+  <div class="dbtns">
+    <button class="pbtn" id="dCompose" onclick="CRM.openCompose(document.getElementById('dEmail').textContent)">Compose email</button>
+    <button class="gbtn" id="dClose">Close</button>
+  </div>
+</div>
+
+<!-- COMPOSE -->
+<div class="compose" id="compose">
+  <div class="cwin">
+    <div class="ch"><span>New message · to <b id="cTo">-</b></span><button class="gbtn" id="cClose" style="padding:4px 10px">✕</button></div>
+    <input id="cSub" placeholder="Subject" autocomplete="off">
+    <textarea id="cBody" placeholder="Write something a human would have postponed…"></textarea>
+    <button class="pbtn" id="cSend">Send</button>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<!-- THE GHOST -->
+<canvas id="trail"></canvas>
+<div id="ghost">
+  <div id="ghostRing"></div>
+  <svg width="22" height="24" viewBox="0 0 22 24" fill="none">
+    <path d="M3 2 L19 12 L11.5 13.5 L8 21 Z" fill="#6FFFC2" fill-opacity=".92" stroke="#04130C" stroke-width="1.2"/>
+  </svg>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/crm.js"></script>
+<script src="js/ghost.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
